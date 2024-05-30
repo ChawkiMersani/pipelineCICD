@@ -28,11 +28,10 @@ jobs:
         with:
           context: .
           push: true
-          tags: "latest"
+          tags: chawkimersani/spring-boot-app:latest
           labels: "chawkimersani/spring-boot-app"
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
 
   deploy:
     runs-on: self-hosted
