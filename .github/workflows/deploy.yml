@@ -42,9 +42,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Kubectl
-            uses: azure/k8s-set-context@v1
-            with:
-              kubeconfig: export KUBECONFIG=/Users/rocky/.kube/config
+        uses: azure/k8s-set-context@v1
+        with:
+          kubeconfig: export KUBECONFIG=/Users/rocky/.kube/config
     
     
       - name: hbib  
