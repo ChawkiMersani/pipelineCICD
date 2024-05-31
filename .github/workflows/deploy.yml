@@ -34,22 +34,22 @@ jobs:
           cache-to: type=gha,mode=max
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
     
-      - name: hbib  
-        uses: yokawasa/action-setup-kube-tools@v0.11.1
+      - name: Set up Kubectl
+        uses: azure/k8s-set-context@v1
         with:
-          kubectl: '1.25'
+          kubeconfig: export KUBECONFIG=/Users/rocky/.kube/config
 
       - name: hbib  hh
         run: |
             mkdir -p ~/.kube
-            echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
+            echo /Users/rocky/.kube/config > ~/.kube/config
             chmod 600 ~/.kube/config
             cat nodejs.yml
             kubectl get pods
