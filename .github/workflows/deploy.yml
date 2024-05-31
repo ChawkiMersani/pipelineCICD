@@ -41,16 +41,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Ensure Stage directory exists
-        run: chmod -R 755 /Users/rocky/Desktop/Stage
-
-      - name: Set up kubectl for Minikube
-        run: |
-          # Ensure Minikube is running
-          minikube status || minikube start
-
-          # Configure kubectl to use Minikube's context
-          kubectl config use-context minikube
+  
 
       - name: Deploy to Kubernetes
         run: kubectl apply -f nodejs.yml
