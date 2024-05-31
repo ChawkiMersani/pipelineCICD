@@ -40,7 +40,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-   
+
 
       - name: Set up Kubectl
         uses: azure/k8s-set-context@v1
@@ -48,3 +48,6 @@ jobs:
           kubeconfig: export KUBECONFIG=/Users/rocky/.kube/config
 
 
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f nodejs.yml
