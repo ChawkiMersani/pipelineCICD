@@ -40,20 +40,27 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-    
-      - name: Set up Kubectl
-        uses: azure/k8s-set-context@v1
-        with:
-          kubeconfig: export KUBECONFIG=/Users/rocky/.kube/config
 
-      - name: hbib  hh
+      - name: Set up Kubectl
         run: |
-            mkdir -p ~/.kube
-            echo /Users/rocky/.kube/config > ~/.kube/config
-            chmod 600 ~/.kube/config
-           
-      - name: hbib  hhh
+          curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x ./kubectl
+          sudo mv ./kubectl /usr/local/bin/kubectl
+          kubectl version --client
+
+      - name: Set Kubeconfig
+        env:
+          KUBECONFIG: export KUBECONFIG=/Users/rocky/.kube/config
         run: |
-            
-            kubectl get pods
-            kubectl apply -f nodejs.yml
+          mkdir -p ~/.kube
+          echo "${KUBECONFIG}" > ~/.kube/config
+          chmod 600 ~/.kube/config
+
+      - name: Verify kubectl installation
+        run: kubectl version --client
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f nodejs.yml
+          kubectl get pods
+      
