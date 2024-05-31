@@ -50,4 +50,6 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
+          cat nodejs.yml
+          kubectl get pods
           kubectl apply -f nodejs.yml
