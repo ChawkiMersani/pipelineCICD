@@ -41,12 +41,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - uses: tale/kubectl-action@v1
-        with:
-          base64-kube-config: ${{ secrets.KUBE }}
-          kubectl-version: v1.22.0
+      - name: Set up kubectl for Minikube
+        run: |
+          # Ensure Minikube is running
+          minikube status || minikube start
+
+          # Configure kubectl to use Minikube's context
+          kubectl config use-context minikube
 
       - name: Deploy to Kubernetes
         run: |
-          kubectl apply -f nodejs.yml --kubeconfig=/Users/rocky/.kube/config
+          kubectl apply -f nodejs.yml 
       
