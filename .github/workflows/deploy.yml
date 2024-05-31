@@ -41,15 +41,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-
       - name: Set up Kubectl
-        uses: azure/k8s-set-context@v1
-        with:
-          kubeconfig: export KUBECONFIG=/Users/rocky/.kube/config
-
-
-      - name: Deploy to Kubernetes
-        run: |
-          cat nodejs.yml
-          kubectl get pods
-          kubectl apply -f nodejs.yml
+            uses: azure/k8s-set-context@v1
+            with:
+              kubeconfig: export KUBECONFIG=/Users/rocky/.kube/config
+    
+    
+      - name: hbib  
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - uses: yokawasa/action-setup-kube-tools@v0.11.1
+          with:
+            kubectl: '1.25'
+        - run: |
+            mkdir -p ~/.kube
+            echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
+            chmod 600 ~/.kube/config
+            cat nodejs.yml
+            kubectl get pods
+            kubectl apply -f nodejs.yml
