@@ -40,19 +40,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+   
 
-      - name: Set up kubectl
-        run: |
-          curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
-          chmod +x ./kubectl
-          mkdir -p $HOME/bin
-          mv ./kubectl $HOME/bin/kubectl
-          echo "$HOME/bin" >> $GITHUB_PATH
-          kubectl version --client
+      - name: Set up Kubectl
+        uses: azure/k8s-set-context@v1
+        with:
+          kubeconfig: export KUBECONFIG=/Users/rocky/.kube/config
 
-      - name: Set KUBECONFIG environment variable
-        run: |
-          export KUBECONFIG=/Users/rocky/.kube/config
 
-      - name: Deploy to Kubernetes
-        run: kubectl apply -f k8s-deployment.yml
