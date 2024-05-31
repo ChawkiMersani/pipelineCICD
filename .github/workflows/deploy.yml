@@ -51,6 +51,9 @@ jobs:
             mkdir -p ~/.kube
             echo /Users/rocky/.kube/config > ~/.kube/config
             chmod 600 ~/.kube/config
-            cat nodejs.yml
+           
+      - name: hbib  hhh
+        run: |
+            
             kubectl get pods
             kubectl apply -f nodejs.yml
