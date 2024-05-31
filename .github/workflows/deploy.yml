@@ -43,14 +43,16 @@ jobs:
 
       - name: Set up kubectl
         run: |
-          curl -LO "https://dl.k8s.io/release/$(curl -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
-          && chmod +x kubectl \
-          && sudo mv kubectl /usr/local/bin/kubectl \
-          && kubectl version --client
+          echo "Downloading kubectl"
+          curl -LO "https://dl.k8s.io/release/$(curl -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          sudo mv kubectl /usr/local/bin/kubectl
+          kubectl version --client
 
       - name: Debug Environment
         run: |
-          echo $PATH
+          echo "Debugging Environment"
+          echo "PATH: $PATH"
           which kubectl
           ls -l $(which kubectl)
           pwd
