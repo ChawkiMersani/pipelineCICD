@@ -51,6 +51,7 @@ jobs:
         uses: yokawasa/action-setup-kube-tools@v0.11.1
         with:
           kubectl: '1.25'
+      - name: hbib  hh
         run: |
             mkdir -p ~/.kube
             echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
