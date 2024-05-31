@@ -40,17 +40,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Set up Kubectl
-        uses: azure/k8s-set-context@v1
-        with:
-          kubeconfig: export KUBECONFIG=/Users/rocky/.kube/config
-    
     
       - name: hbib  
         uses: yokawasa/action-setup-kube-tools@v0.11.1
         with:
           kubectl: '1.25'
+
       - name: hbib  hh
         run: |
             mkdir -p ~/.kube
