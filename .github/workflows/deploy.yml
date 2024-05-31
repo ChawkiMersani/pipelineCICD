@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Ensure Stage directory exists
         run: |
-            chmod 755 /Users/rocky/Desktop/Stage
+            chmod -R 755 /Users/rocky/Desktop/Stage
 
       - name: Set up kubectl for Minikube
         run: |
