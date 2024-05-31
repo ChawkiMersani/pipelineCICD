@@ -48,5 +48,5 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          kubectl apply -f nodejs.yml
-          kubectl get pods
+          kubectl apply -f nodejs.yml --kubeconfig=/Users/rocky/.kube/config
+      
