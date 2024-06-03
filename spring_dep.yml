@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: springboot
-          image: chawkimersani/spring-boot-app:14
+          image: chawkimersani/spring-boot-app:latest
           ports:
             - containerPort: 8080
           env:   # Setting Environmental Variables
