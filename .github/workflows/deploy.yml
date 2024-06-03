@@ -29,9 +29,11 @@ jobs:
           context: .
           push: true
           tags: chawkimersani/spring-boot-app:latest
-          labels: "chawkimersani/spring-boot-app"
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Clean up Docker cache
+        run: docker builder prune -f
 
   deploy:
     runs-on: self-hosted
@@ -41,7 +43,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-  
+      - name: Set up kubectl
+        run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          sudo mv kubectl /usr/local/bin/kubectl
+          kubectl version --client
 
       - name: Deploy to Kubernetes
         run: kubectl apply -f spring_dep.yml
