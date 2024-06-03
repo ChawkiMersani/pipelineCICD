@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:62344")
 @Controller
 @RequestMapping("messagesqueues")
 public class MessageQueuesController {
