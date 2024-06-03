@@ -43,23 +43,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install kubectl
-        run: |
-          KUBECTL_VERSION="v1.22.0"  # Specify the desired version
-          curl -LO "https://dl.k8s.io/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl"
-          chmod +x kubectl
-          sudo mv kubectl /usr/local/bin/kubectl
-          kubectl version --client
-
       - name: Set Kubeconfig
-        env:
-          KUBECONFIG: ${{ secrets.KUBECONFIG }}
         run: |
-          mkdir -p ~/.kube
-          echo "${{ secrets.KUBECONFIG }}" | base64 --decode > ~/.kube/config
-          chmod 600 ~/.kube/config
+          export KUBECONFIG=/Users/rocky/.kube/config
           kubectl config view # Debugging: Display kubeconfig to ensure it's set correctly
           kubectl get nodes   # Debugging: Check connection to Kubernetes cluster
 
       - name: Deploy to Kubernetes
-        run: kubectl apply -f spring_dep.yml
+        run: |
+          export KUBECONFIG=/Users/rocky/.kube/config
+          kubectl apply -f spring_dep.yml
