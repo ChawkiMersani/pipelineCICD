@@ -43,13 +43,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set Kubeconfig
-        run: |
-          export KUBECONFIG=/Users/rocky/.kube/config
-          kubectl config view # Debugging: Display kubeconfig to ensure it's set correctly
-          kubectl get nodes   # Debugging: Check connection to Kubernetes cluster
-
       - name: Deploy to Kubernetes
         run: |
-          export KUBECONFIG=/Users/rocky/.kube/config
           kubectl apply -f spring_dep.yml
