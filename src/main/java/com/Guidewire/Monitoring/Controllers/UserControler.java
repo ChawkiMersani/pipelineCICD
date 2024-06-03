@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-@CrossOrigin(exposedHeaders = {"Authorization"},origins = "http://localhost:62344")
+@CrossOrigin(exposedHeaders = {"Authorization"})
 @Controller
 @RequestMapping("user")
 public class UserControler {

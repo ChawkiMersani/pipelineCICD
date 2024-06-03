@@ -14,7 +14,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("document")
-@CrossOrigin(origins = "http://localhost:62344")
+@CrossOrigin
 public class DocumentController {
     @Autowired
     DocumentService documentService;

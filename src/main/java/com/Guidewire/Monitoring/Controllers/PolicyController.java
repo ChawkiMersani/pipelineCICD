@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/policies")
-@CrossOrigin(origins = "http://localhost:62344")
+@CrossOrigin
 public class PolicyController {
 
     @Autowired
