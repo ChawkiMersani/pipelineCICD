@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import java.text.ParseException;
 import java.util.Map;
 
-
+@CrossOrigin(origins = "http://localhost:51176")
 @Controller
 @RequestMapping("document")
-@CrossOrigin
+
 public class DocumentController {
     @Autowired
     DocumentService documentService;

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:51176")
 @Controller
 @RequestMapping("log")
 public class LogController {
