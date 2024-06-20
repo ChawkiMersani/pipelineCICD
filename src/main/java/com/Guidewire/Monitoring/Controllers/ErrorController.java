@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:51176")
+@CrossOrigin(exposedHeaders = {"Authorization"},origins = "http://localhost:51176")
 @Controller
 @RequestMapping("error")
 public class ErrorController {
