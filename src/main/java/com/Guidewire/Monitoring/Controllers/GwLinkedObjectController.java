@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(exposedHeaders = {"Authorization"},origins = "http://localhost:51176")
+@CrossOrigin(origins = "http://localhost:51176")
 @Controller
 @RequestMapping("GwLinkedObject")
 public class GwLinkedObjectController {

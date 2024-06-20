@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.text.ParseException;
 import java.util.Map;
 
-@CrossOrigin(exposedHeaders = {"Authorization"},origins = "http://localhost:51176")
+@CrossOrigin(origins = "http://localhost:51176")
 @Controller
 @RequestMapping("document")
 
